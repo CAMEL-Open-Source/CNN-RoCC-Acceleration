@@ -1,4 +1,9 @@
-// See LICENSE for license details.
+// SPDX-License-Identifier: GPL-3.0-or-later
+/*
+ * Copyright (C) 2022 CAMELab
+ *
+ * Author: Junhyeok Jang <jhjang@camelab.org>
+ */
 
 #ifndef __GEMMINI_API_GEMMINI_H__
 #define __GEMMINI_API_GEMMINI_H__
