@@ -1,3 +1,10 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+/*
+ * Copyright (C) 2022 CAMELab
+ *
+ * Author: Junhyeok Jang <jhjang@camelab.org>
+ */
+
 #include "stateful_conv1d.hh"
 
 StatefulConv1d::StatefulConv1d(int batch_size, int in_features,
