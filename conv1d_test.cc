@@ -1,3 +1,10 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+/*
+ * Copyright (C) 2022 CAMELab
+ *
+ * Author: Junhyeok Jang <jhjang@camelab.org>
+ */
+
 #include "gemmini-api/gemmini_testutils.h"
 #include "modules/layer.hh"
 #include "util/util.hh"

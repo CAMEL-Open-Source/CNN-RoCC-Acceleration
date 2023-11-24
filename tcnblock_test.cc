@@ -1,3 +1,10 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+/*
+ * Copyright (C) 2022 CAMELab
+ *
+ * Author: Junhyeok Jang <jhjang@camelab.org>
+ */
+
 #include "tcnblock_test.hh"
 
 int main() {

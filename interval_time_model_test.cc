@@ -1,3 +1,10 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+/*
+ * Copyright (C) 2022 CAMELab
+ *
+ * Author: Junhyeok Jang <jhjang@camelab.org>
+ */
+
 #include "interval_time_model_test.hh"
 
 #include <cinttypes>
