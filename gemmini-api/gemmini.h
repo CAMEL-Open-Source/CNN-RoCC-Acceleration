@@ -194,7 +194,7 @@ scale_acc_t_bits scale_acc_t_to_scale_acc_t_bits(scale_acc_t x) {
                            k_MVIN)
 
 #define gemmini_block_mvin(dram_addr, spad_addr, len) \
-  gemmini_extended_mvin(dram_addr, spad_addr, (len)*DIM, DIM)
+  gemmini_extended_mvin(dram_addr, spad_addr, (len) * DIM, DIM)
 
 #define gemmini_mvin(dram_addr, spad_addr) \
   gemmini_extended_mvin(dram_addr, spad_addr, DIM, DIM)
@@ -403,7 +403,8 @@ static void sp_tiled_matmul_os(
         if (k == 0) {  // First iteration
           gemmini_extended_compute_preloaded(A_sp_addr, B_sp_addr, A_cols,
                                              A_rows, B_cols, B_rows);
-        } else {  // All other iterations
+        }
+        else {  // All other iterations
           gemmini_extended_compute_accumulated(A_sp_addr, B_sp_addr, A_cols,
                                                A_rows, B_cols, B_rows);
         }
@@ -527,7 +528,8 @@ static void sp_tiled_matmul_ws(
         if (i == 0) {  // First iteration
           gemmini_extended_compute_preloaded(A_sp_addr, GARBAGE_ADDR, A_cols,
                                              A_rows, DIM, DIM);
-        } else {  // All other iterations
+        }
+        else {  // All other iterations
           gemmini_extended_compute_accumulated(A_sp_addr, GARBAGE_ADDR, A_cols,
                                                A_rows, DIM, DIM);
         }
@@ -604,7 +606,8 @@ static void tiled_matmul_outer(size_t dim_I, size_t dim_J, size_t dim_K,
         const acc_t *pre;
         if (k0 != 0) {
           pre = NULL;
-        } else {
+        }
+        else {
           size_t bias_row = repeating_bias ? 0 : i0 * tile_I * DIM;
           pre = &(((acc_t *)D)[bias_row * stride_D + j0 * tile_J * DIM]);
         }
@@ -627,7 +630,8 @@ static void tiled_matmul_outer(size_t dim_I, size_t dim_J, size_t dim_K,
               A_scale_factor, B_scale_factor, D_scale_factor, I, J, K, pad_I,
               pad_J, pad_K, stride_A, stride_B, stride_D, stride_C, no_bias,
               repeating_bias);
-        } else {
+        }
+        else {
           sp_tiled_matmul_ws(
               A + i0 * tile_I * DIM * stride_A + k0 * tile_K * DIM,
               B + k0 * tile_K * DIM * stride_B + j0 * tile_J * DIM, pre, out,
@@ -815,7 +819,8 @@ static void matmul_cpu(size_t DIM_I, size_t DIM_J, size_t DIM_K,
             scale_and_sat(result[3][3], act, shift, relu6_shift);
       }
     }
-  } else {
+  }
+  else {
     for (size_t i = 0; i < DIM_I; i++) {
       for (size_t j = 0; j < DIM_J; j++) {
         const size_t bias_row = repeating_bias ? 0 : i;
@@ -882,10 +887,12 @@ static void tiled_matmul(size_t dim_I, size_t dim_J, size_t dim_K,
   if (tile_I <= 0) {
     printf("tile_I is non-positive\n");
     exit(1);
-  } else if (tile_J <= 0) {
+  }
+  else if (tile_J <= 0) {
     printf("tile_J is non-positive\n");
     exit(1);
-  } else if (tile_K <= 0) {
+  }
+  else if (tile_K <= 0) {
     printf("tile_K is non-positive\n");
     exit(1);
   }
@@ -897,10 +904,12 @@ static void tiled_matmul(size_t dim_I, size_t dim_J, size_t dim_K,
   if (tile_I * DIM > dim_I_padded) {
     printf("tile_I is too large (tile_I * DIM > dim_I_padded)\n");
     exit(1);
-  } else if (tile_J * DIM > dim_J_padded) {
+  }
+  else if (tile_J * DIM > dim_J_padded) {
     printf("tile_J is too large (tile_J * DIM > dim_J_padded)\n");
     exit(1);
-  } else if (tile_K * DIM > dim_K_padded) {
+  }
+  else if (tile_K * DIM > dim_K_padded) {
     printf("tile_K is too large (tile_K * DIM > dim_K_padded)\n");
     exit(1);
   }
@@ -921,9 +930,8 @@ static void tiled_matmul(size_t dim_I, size_t dim_J, size_t dim_K,
   }
 
   if (tile_I > 65535 || tile_J > 65535 || tile_K > 65535) {
-    printf(
-        "I, J, and K tiling factors must be less than 65535, to fit within "
-        "the bounds of the LOOP_WS function");
+    printf("I, J, and K tiling factors must be less than 65535, to fit within "
+           "the bounds of the LOOP_WS function");
     exit(1);
   }
 #endif
@@ -934,7 +942,8 @@ static void tiled_matmul(size_t dim_I, size_t dim_J, size_t dim_K,
                        stride_D, stride_C, A_scale_factor, B_scale_factor,
                        D_scale_factor, tile_I, tile_J, tile_K, act, shift,
                        relu6_shift, repeating_bias, (int)tiled_matmul_type);
-  } else /*if (tiled_matmul_type == CPU)*/
+  }
+  else /*if (tiled_matmul_type == CPU)*/
   {
     matmul_cpu(dim_I, dim_J, dim_K, A, B, D, C, stride_A, stride_B, stride_D,
                stride_C, A_scale_factor, B_scale_factor, D_scale_factor, act,
@@ -1053,7 +1062,8 @@ static void sp_tiled_conv(int batch_size, int in_dim, int in_channels,
 
         if (icol < 0) {
           I = -icol > DIM ? DIM : -icol;
-        } else if (icol >= icols_unpadded) {
+        }
+        else if (icol >= icols_unpadded) {
           I = icols_unpadded + rpad - icol > DIM ? DIM
                                                  : icols_unpadded + rpad - icol;
         }
@@ -1195,7 +1205,8 @@ static void sp_tiled_conv(int batch_size, int in_dim, int in_channels,
                   C_sp_addr, J, I);
             }
           }
-    } else {
+    }
+    else {
       gemmini_extended_config_st(out_channels * sizeof(elem_t), pool_stride,
                                  pool_size, pool_out_dim, porows, pocols, orows,
                                  ocols, pupad, plpad);
@@ -1336,7 +1347,8 @@ static void conv_cpu(int batch_size, int in_dim, int in_channels,
                   running_max = 0;
                   running_max_initialized = true;
                 }
-              } else {
+              }
+              else {
                 acc_t opixel = no_bias ? 0 : bias[poch];
 
                 for (int krow = 0; krow < kernel_dim; krow++) {
@@ -1411,7 +1423,8 @@ static void tiled_conv(int batch_size, int in_dim, int in_channels,
              padding, kernel_dim, input, weights, bias, output, act, shift,
              relu6_shift, pool_size, pool_stride, pool_padding);
     return;
-  } else if (tiled_conv_type == OS) {
+  }
+  else if (tiled_conv_type == OS) {
     printf("Gemmini convs do not currently support OS\n");
     exit(1);
   }
@@ -1824,7 +1837,8 @@ static void tiled_resadd_auto(const size_t I, const size_t J, const int A_shift,
 
   if (matadd_type == WS) {
     tiled_resadd(I, J, tile_I, tile_J, A_shift, A, B, C, relu, matadd_type);
-  } else {
+  }
+  else {
     printf("Unsupported type\n");
     exit(1);
   }

@@ -46,7 +46,7 @@
  * @param func7 the value of the func7 field
  * @return a raw .insn RoCC instruction
  */
-#define ROCC_INSTRUCTION_RAW_R_R_R(x, rd, rs1, rs2, func7)                     \
+#define ROCC_INSTRUCTION_RAW_R_R_R(x, rd, rs1, rs2, func7) \
   .insn r CAT(CUSTOM_, x), 7, func7, rd, rs1, rs2
 
 /** Assembly macro for creating "raw" Rocket Custom Coproessor (RoCC)
@@ -73,7 +73,7 @@
  * @param func7 the value of the func7 field
  * @return a raw .insn RoCC instruction
  */
-#define ROCC_INSTRUCTION_RAW_0_R_R(x, rs1, rs2, func7)                         \
+#define ROCC_INSTRUCTION_RAW_0_R_R(x, rs1, rs2, func7) \
   .insn r CAT(CUSTOM_, x), 3, func7, x0, rs1, rs2
 
 /** C/C++ inline assembly macro for creating Rocket Custom Coprocessor
@@ -83,7 +83,7 @@
  * This is equivalent to ROCC_INSTRUCTION_R_R_R. See it's
  * documentation.
  */
-#define ROCC_INSTRUCTION(x, rd, rs1, rs2, func7)                               \
+#define ROCC_INSTRUCTION(x, rd, rs1, rs2, func7) \
   ROCC_INSTRUCTION_R_R_R(x, rd, rs1, rs2, func7)
 
 /** C/C++ inline assembly macro for creating Rocket Custom Coprocessor
@@ -112,12 +112,12 @@
  * @param func7 the value of the func7 field
  * @return an inline assembly RoCC instruction
  */
-#define ROCC_INSTRUCTION_R_R_R(x, rd, rs1, rs2, func7)                         \
-  {                                                                            \
-    asm volatile(".insn r " STR(CAT(CUSTOM_, x)) ", " STR(0x7) ", " STR(       \
-                     func7) ", %0, %1, %2"                                     \
-                 : "=r"(rd)                                                    \
-                 : "r"(rs1), "r"(rs2));                                        \
+#define ROCC_INSTRUCTION_R_R_R(x, rd, rs1, rs2, func7)                   \
+  {                                                                      \
+    asm volatile(".insn r " STR(CAT(CUSTOM_, x)) ", " STR(0x7) ", " STR( \
+                     func7) ", %0, %1, %2"                               \
+                 : "=r"(rd)                                              \
+                 : "r"(rs1), "r"(rs2));                                  \
   }
 
 /** C/C++ inline assembly macro for creating Rocket Custom Coprocessor
@@ -144,12 +144,12 @@
  * @param funct7 the value of the funct7 f
  * @return an inline assembly RoCC instruction
  */
-#define ROCC_INSTRUCTION_0_R_R(x, rs1, rs2, func7)                             \
-  {                                                                            \
-    asm volatile(".insn r " STR(CAT(CUSTOM_, x)) ", " STR(0x3) ", " STR(       \
-                     func7) ", x0, %0, %1"                                     \
-                 :                                                             \
-                 : "r"(rs1), "r"(rs2));                                        \
+#define ROCC_INSTRUCTION_0_R_R(x, rs1, rs2, func7)                       \
+  {                                                                      \
+    asm volatile(".insn r " STR(CAT(CUSTOM_, x)) ", " STR(0x3) ", " STR( \
+                     func7) ", x0, %0, %1"                               \
+                 :                                                       \
+                 : "r"(rs1), "r"(rs2));                                  \
   }
 
 // [TODO] fix these to align with the above approach
@@ -167,4 +167,4 @@
                 : [rs1] "i" (rs1_), [rs2] "i" (rs2_), [funct] "i" (funct_))
 */
 
-#endif // ROCC_SOFTWARE_SRC_XCUSTOM_H_
+#endif  // ROCC_SOFTWARE_SRC_XCUSTOM_H_

@@ -22,10 +22,10 @@
 
 #ifdef BAREMETAL
 #undef assert
-#define assert(expr)                                                           \
-  if (!(expr)) {                                                               \
-    printf("Failed assertion: " #expr "\n  " __FILE__ ":%u\n", __LINE__);      \
-    exit(1);                                                                   \
+#define assert(expr)                                                      \
+  if (!(expr)) {                                                          \
+    printf("Failed assertion: " #expr "\n  " __FILE__ ":%u\n", __LINE__); \
+    exit(1);                                                              \
   }
 #endif
 
@@ -57,4 +57,4 @@ inline uint64_t read_cycles() {
 
 #undef abs
 
-#endif // SRC_MAIN_C_GEMMINI_TESTUTILS_H
+#endif  // SRC_MAIN_C_GEMMINI_TESTUTILS_H
