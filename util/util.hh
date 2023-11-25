@@ -8,13 +8,14 @@
 #ifndef __UTIL_HH__
 #define __UTIL_HH__
 
-#include "bfloat16.h"
-#include "gemmini-api/gemmini_params.h"
 #include <iostream>
 #include <string>
 
+#include "bfloat16.h"
+#include "gemmini-api/gemmini_params.h"
+
 #define ARRAY_INDEX_2D(jsize, i, j) ((i) * (jsize) + (j))
-#define ARRAY_INDEX_3D(jsize, ksize, i, j, k)                                  \
+#define ARRAY_INDEX_3D(jsize, ksize, i, j, k) \
   ((i) * (jsize * ksize) + (j) * (ksize) + (k))
 
 static void print1dvector(std::string name, elem_t *matrix, int isize) {
