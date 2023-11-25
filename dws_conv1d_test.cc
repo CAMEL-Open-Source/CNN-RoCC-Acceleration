@@ -58,7 +58,8 @@ int main() {
 
   if (success) {
     printf("SUCCESS!\n");
-  } else {
+  }
+  else {
     printf("FAILED!\n");
 
     mydwsconv.print_weights();

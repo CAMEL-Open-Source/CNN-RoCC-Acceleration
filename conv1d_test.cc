@@ -5,13 +5,14 @@
  * Author: Junhyeok Jang <jhjang@camelab.org>
  */
 
-#include "gemmini-api/gemmini_testutils.h"
-#include "modules/layer.hh"
-#include "util/util.hh"
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/mman.h>
+
+#include "gemmini-api/gemmini_testutils.h"
+#include "modules/layer.hh"
+#include "util/util.hh"
 
 #define BATCH_SIZE 1
 #define IN_LENGTH 8
@@ -112,7 +113,8 @@ int main() {
 
   if (success) {
     printf("SUCCESS!\n");
-  } else {
+  }
+  else {
     printf("FAILED!\n");
 
     myconv.print_weights();

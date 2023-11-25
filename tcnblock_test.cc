@@ -62,7 +62,8 @@ int main() {
 
   if (success) {
     printf("SUCCESS!\n");
-  } else {
+  }
+  else {
     printf("FAILED!\n");
 
     mytcnblock.print_weights();

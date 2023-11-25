@@ -120,7 +120,8 @@ int main() {
 #if DEBUG
   if (success) {
     printf("SUCCESS!\n");
-  } else {
+  }
+  else {
     printf("FAILED!\n");
 
     mymodel.print_weights();

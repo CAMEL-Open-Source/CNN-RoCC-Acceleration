@@ -5,13 +5,14 @@
  * Author: Junhyeok Jang <jhjang@camelab.org>
  */
 
-#include "gemmini-api/gemmini_testutils.h"
-#include "modules/tcnblock.hh"
-#include "util/util.hh"
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/mman.h>
+
+#include "gemmini-api/gemmini_testutils.h"
+#include "modules/tcnblock.hh"
+#include "util/util.hh"
 
 #define BATCH_SIZE 1
 #define IN_LENGTH 8
@@ -36,13 +37,13 @@ bool vec_is_equal(elem_t *a, elem_t *b, int len) {
 }
 
 static float input_fp32[BATCH_SIZE][IN_LENGTH][IN_FEATURES] = {{{4, 2, 1},
-                                                           {4, 3, 3},
-                                                           {3, 1, 4},
-                                                           {0, 1, 3},
-                                                           {3, 1, 1},
-                                                           {4, 4, 4},
-                                                           {2, 3, 1},
-                                                           {3, 1, 4}}};
+                                                                {4, 3, 3},
+                                                                {3, 1, 4},
+                                                                {0, 1, 3},
+                                                                {3, 1, 1},
+                                                                {4, 4, 4},
+                                                                {2, 3, 1},
+                                                                {3, 1, 4}}};
 
 static float weight1_fp32[OUT_FEATURES][KERNEL_SIZE][IN_FEATURES] = {
     {{4, 4, 1}, {1, 4, 2}, {4, 0, 3}},
@@ -66,11 +67,11 @@ static float bias2_fp32[OUT_FEATURES] = {4, 3, 4, 4};
 
 static float weight1x1_fp32[OUT_FEATURES][1][IN_FEATURES] = {{{4, 0, 2}},
 
-                                                        {{4, 0, 3}},
+                                                             {{4, 0, 3}},
 
-                                                        {{3, 2, 3}},
+                                                             {{3, 2, 3}},
 
-                                                        {{0, 4, 4}}};
+                                                             {{0, 4, 4}}};
 static float bias1x1_fp32[OUT_FEATURES] = {3, 1, 3, 1};
 
 static float output_fp32[BATCH_SIZE][IN_LENGTH][OUT_FEATURES] = {
