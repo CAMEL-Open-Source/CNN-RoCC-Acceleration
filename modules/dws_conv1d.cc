@@ -6,6 +6,7 @@
  */
 
 #include "dws_conv1d.hh"
+
 #include "gemmini-api/gemmini_testutils.h"
 
 PointwiseConv1d::PointwiseConv1d(int batch_size, int in_features,
@@ -24,7 +25,6 @@ int PointwiseConv1d::seq2col(const elem_t *input) {
   for (int n_batch = 0; n_batch < batch_size; n_batch++) {
     // iterate over image coordinates
     for (int im_col = -padding; im_col < in_length; im_col++) {
-
       // iterate over filter coordinates
       int patch_col = 0;
       int filter_col = 0;
@@ -33,7 +33,8 @@ int PointwiseConv1d::seq2col(const elem_t *input) {
 
         if (pixel_col < 0 || pixel_col >= in_length) {
           // output[patch_row][patch_col] = 0;
-        } else {
+        }
+        else {
           seq2col_out[ARRAY_INDEX_2D(patch_size, patch_row, patch_col)] =
               input[ARRAY_INDEX_3D(batch_size, in_length, im_channel, n_batch,
                                    pixel_col)];
@@ -54,7 +55,7 @@ DepthwiseConv1d::DepthwiseConv1d(int batch_size, int in_features,
                                  int padding, int activation, bool has_bias)
     : Conv1d(batch_size, in_features, out_features, in_length, kernel_size,
              stride, dilation, padding, activation, has_bias) {
-  groups = in_features; // only for mobilenet
+  groups = in_features;  // only for mobilenet
 
   // I didn't test other scenario and we don't need it
   assert(in_features == out_features);
@@ -107,7 +108,6 @@ int DepthwiseConv1d::seq2col(const elem_t *input) {
     // iterate over image coordinates
     for (int im_col = -padding; im_col < in_length - kernel_reach + 1;
          im_col += stride) {
-
       // iterate over filter coordinates
       int patch_col = 0;
       for (int filter_col = 0; filter_col < kernel_size; filter_col++) {
@@ -118,7 +118,8 @@ int DepthwiseConv1d::seq2col(const elem_t *input) {
 
           if (pixel_col < 0 || pixel_col >= in_length) {
             // output[patch_row][patch_col] = 0;
-          } else {
+          }
+          else {
             seq2col_out[ARRAY_INDEX_2D(patch_size, patch_row, patch_col)] =
                 input[ARRAY_INDEX_3D(in_length, in_features, n_batch, pixel_col,
                                      im_channel)];
@@ -181,8 +182,8 @@ void DepthwiseConv1d::print_weights() {
 DWSConv1d::DWSConv1d(int batch_size, int in_features, int out_features,
                      int in_length, int kernel_size, int stride, int dilation,
                      int padding, int activation, bool has_bias)
-    : Layer(batch_size, in_features, out_features), convs{(Conv1d *)nullptr,
-                                                          (Conv1d *)nullptr} {
+    : Layer(batch_size, in_features, out_features),
+      convs{(Conv1d *)nullptr, (Conv1d *)nullptr} {
   convs[0] = new DepthwiseConv1d(batch_size, in_features, in_features,
 
                                  in_length, kernel_size, stride, dilation,
@@ -200,7 +201,6 @@ DWSConv1d::~DWSConv1d() {
 }
 
 int DWSConv1d::prepare() {
-
   hidden =
       (elem_t *)malloc(sizeof(elem_t) * batch_size * out_length * in_features);
 
@@ -233,7 +233,6 @@ int DWSConv1d::prepare(std::vector<elem_t *> &params,
 }
 
 int DWSConv1d::forward(elem_t *input, elem_t *output) {
-
   convs[0]->forward(input, hidden);
   convs[1]->forward(hidden, output);
 

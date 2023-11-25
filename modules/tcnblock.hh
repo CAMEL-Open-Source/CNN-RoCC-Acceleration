@@ -17,7 +17,7 @@ enum Mode { ORIGINAL, DWS, STATEFUL };
 #define TCNBLOCK_NUM_PARAMS 6
 #define TCNBLOCK_NUM_SCALES 4
 class BaseTCNBlock : public Layer {
-protected:
+ protected:
   Layer *conv1;
   Layer *conv2;
   Conv1d *conv1x1;
@@ -37,8 +37,9 @@ protected:
   elem_t *conv2_out;
   elem_t *conv1x1_out;
 
-public:
-  BaseTCNBlock(int batch_size, int in_features, int out_features, int in_length);
+ public:
+  BaseTCNBlock(int batch_size, int in_features, int out_features,
+               int in_length);
   ~BaseTCNBlock();
   BaseTCNBlock(BaseTCNBlock &&);
   int prepare() override;
@@ -49,7 +50,7 @@ public:
 };
 
 class OriginalTCNBlock : public BaseTCNBlock {
-public:
+ public:
   OriginalTCNBlock(int batch_size, int in_features, int out_features,
                    int in_length, int kernel_size, int stride,
                    std::pair<int, int> dilation, int activation,
@@ -57,7 +58,7 @@ public:
 };
 
 class StatefulTCNBlock : public BaseTCNBlock {
-public:
+ public:
   StatefulTCNBlock(int batch_size, int in_features, int out_features,
                    int in_length, int kernel_size, int stride,
                    std::pair<int, int> dilation, int activation,

@@ -10,7 +10,8 @@
 IntervaltimeModel::IntervaltimeModel(int batch_size, int in_feature,
                                      int hidden_feature, int out_category,
                                      int in_length, int num_blocks,
-                                     int kernel_size, Mode mode, tiled_matmul_type_t matmul_type) {
+                                     int kernel_size, Mode mode,
+                                     tiled_matmul_type_t matmul_type) {
   this->batch_size = batch_size;
   this->in_feature = in_feature;
   this->hidden_feature = hidden_feature;
@@ -29,13 +30,16 @@ IntervaltimeModel::IntervaltimeModel(int batch_size, int in_feature,
       network.emplace_back(new OriginalTCNBlock(
           batch_size, in, hidden_feature, in_length, kernel_size, 1,
           list_dilation.at(i % 3), RELU, true, matmul_type));
-    } else if (mode == STATEFUL) {
+    }
+    else if (mode == STATEFUL) {
       network.emplace_back(new StatefulTCNBlock(
           batch_size, in, hidden_feature, in_length, kernel_size, 1,
           list_dilation.at(i % 3), RELU, true, matmul_type));
-    } else if (mode == DWS) {
+    }
+    else if (mode == DWS) {
       printf("depthwise separable tcn block not implemented\n");
-    } else {
+    }
+    else {
       printf("invalid mode");
     }
   }

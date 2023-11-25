@@ -8,20 +8,22 @@
 #ifndef __INTERVAL_TIME_MODEL_HH__
 #define __INTERVAL_TIME_MODEL_HH__
 
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/mman.h>
+
+#include <cstring>
+#include <string>
+#include <vector>
+
 #include "gemmini-api/gemmini_testutils.h"
 #include "layer.hh"
 #include "tcnblock.hh"
 #include "util/util.hh"
-#include <cstring>
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string>
-#include <sys/mman.h>
-#include <vector>
 
 class IntervaltimeModel {
-private:
+ private:
   int batch_size;
   int in_feature;
   int hidden_feature;
@@ -32,12 +34,12 @@ private:
   int kernel_size;
   Mode mode;
 
-  std::vector<Layer *> network; // layers
-  std::vector<elem_t *> hidden; // intermediate outputs
+  std::vector<Layer *> network;  // layers
+  std::vector<elem_t *> hidden;  // intermediate outputs
 
   std::vector<uint64_t> ticks;
 
-public:
+ public:
   IntervaltimeModel(int, int, int, int, int, int, int, Mode = ORIGINAL,
                     tiled_matmul_type_t = WS);
   ~IntervaltimeModel();

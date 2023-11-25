@@ -8,17 +8,18 @@
 #ifndef __DWS_CONV1D_HH__
 #define __DWS_CONV1D_HH__
 
+#include <array>
+
 #include "layer.hh"
 #include "util/util.hh"
-#include <array>
 
 #define DEPTHWISECONV1D_NUM_PARAMS 4
 #define DEPTHWISECONV1D_NUM_SCALES 2
 class DepthwiseConv1d : public Conv1d {
-private:
+ private:
   int groups;
 
-public:
+ public:
   DepthwiseConv1d(int batch_size, int in_features, int out_features,
                   int in_length, int kernel_size, int stride, int dilation,
                   int padding, int activation = RELU, bool has_bias = true);
@@ -33,8 +34,8 @@ public:
 #define POINTWISECONV1D_NUM_PARAMS 4
 #define POINTWISECONV1D_NUM_SCALES 2
 class PointwiseConv1d : public Conv1d {
-private:
-public:
+ private:
+ public:
   PointwiseConv1d(int batch_size, int in_features, int out_features,
                   int in_length, int activation = RELU, bool has_bias = true);
   ~PointwiseConv1d() {}
@@ -44,12 +45,12 @@ public:
 #define DWSCONV1D_NUM_PARAMS 4
 #define DWSCONV1D_NUM_SCALES 2
 class DWSConv1d : public Layer {
-private:
+ private:
   std::array<Conv1d *, 2> convs;
   elem_t *hidden;
 
   int in_length;
-  int out_length; // length of the output sequence
+  int out_length;  // length of the output sequence
 
   int kernel_size;
   int stride;
@@ -59,7 +60,7 @@ private:
   int activation;
   bool has_bias;
 
-public:
+ public:
   DWSConv1d(int batch_size, int in_features, int out_features, int in_length,
             int kernel_size, int stride, int dilation, int padding,
             int activation = RELU, bool has_bias = true);

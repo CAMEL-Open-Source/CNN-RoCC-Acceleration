@@ -116,7 +116,8 @@ int BaseTCNBlock::forward(elem_t *input, elem_t *output) {
     conv1x1->forward(input, conv1x1_out);
     tiled_resadd_auto(batch_size * length, out_features, 0, conv1x1_out,
                       conv2_out, output, true, WS);
-  } else {
+  }
+  else {
     tiled_resadd_auto(batch_size * length, out_features, 0, input, conv2_out,
                       output, true, WS);
   }
@@ -157,9 +158,9 @@ StatefulTCNBlock::StatefulTCNBlock(int batch_size, int in_features,
                                    int out_features, int in_length,
                                    int kernel_size, int stride,
                                    std::pair<int, int> dilation, int activation,
-                                   bool has_bias, tiled_matmul_type_t matmul_type)
+                                   bool has_bias,
+                                   tiled_matmul_type_t matmul_type)
     : BaseTCNBlock(batch_size, in_features, out_features, in_length) {
-
   int padding1 = (kernel_size - 1) * dilation.first;
   int padding2 = (kernel_size - 1) * dilation.second;
 
@@ -169,10 +170,11 @@ StatefulTCNBlock::StatefulTCNBlock(int batch_size, int in_features,
   conv2 = new StatefulConv1d(batch_size, out_features, out_features, in_length,
                              kernel_size, stride, dilation.second, padding2,
                              activation, has_bias, matmul_type);
-  conv1x1 = (in_features != out_features)
-                ? new StatefulConv1d(batch_size, in_features, out_features,
-                                     in_length, 1, 1, 1, 0, NO_ACTIVATION, has_bias, matmul_type)
-                : nullptr;
+  conv1x1 =
+      (in_features != out_features)
+          ? new StatefulConv1d(batch_size, in_features, out_features, in_length,
+                               1, 1, 1, 0, NO_ACTIVATION, has_bias, matmul_type)
+          : nullptr;
 
   hidden_size = batch_size * out_features;
 }
@@ -188,7 +190,8 @@ int StatefulTCNBlock::forward(elem_t *input, elem_t *output) {
     conv1x1->forward(input, conv1x1_out);
     tiled_resadd_auto(batch_size, out_features, 0, conv1x1_out, conv2_out,
                       output, true, WS);
-  } else {
+  }
+  else {
     tiled_resadd_auto(batch_size, out_features, 0, input, conv2_out, output,
                       true, WS);
   }

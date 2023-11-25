@@ -8,23 +8,23 @@
 #ifndef __LAYER_H__
 #define __LAYER_H__
 
-#include "gemmini-api/gemmini.h"
-#include "gemmini-api/gemmini_params.h"
-#include "util/util.hh"
-
 #include <cassert>
 #include <cstring>
 #include <utility>
 #include <vector>
 
+#include "gemmini-api/gemmini.h"
+#include "gemmini-api/gemmini_params.h"
+#include "util/util.hh"
+
 // abstract base class
 class Layer {
-protected:
+ protected:
   int batch_size;
   int in_features;
   int out_features;
 
-public:
+ public:
   Layer(int, int, int);
   virtual ~Layer() {}
 
@@ -50,9 +50,9 @@ public:
 class Conv1d : public Layer {
   /* bit different from typical conv1d since this applies padding only on left
    * side rather than both side*/
-protected:
+ protected:
   int in_length;
-  int out_length; // length of the output sequence
+  int out_length;  // length of the output sequence
 
   int kernel_size;
   int stride;
@@ -61,11 +61,11 @@ protected:
   int output_scale;
   int activation;
   bool has_bias;
-  bool depthwise; // mobilenet
+  bool depthwise;  // mobilenet
 
-  int n_patches;  // number of convolution iterations per output channel
-                  // (batchsize*out_length)
-  int patch_size; // size of convolution patch (kernel * in_channels)
+  int n_patches;   // number of convolution iterations per output channel
+                   // (batchsize*out_length)
+  int patch_size;  // size of convolution patch (kernel * in_channels)
   int kernel_reach;
 
   elem_t *seq2col_out;
@@ -77,7 +77,7 @@ protected:
 
   tiled_matmul_type_t matmul_type;
 
-public:
+ public:
   Conv1d(int batch_size, int in_features, int out_features, int in_length,
          int kernel_size, int stride, int dilation, int padding,
          int activation = RELU, bool has_bias = true,
@@ -94,7 +94,7 @@ public:
 #define LINEAR_NUM_PARAMS 2
 #define LINEAR_NUM_SCALES 1
 class Linear : public Layer {
-private:
+ private:
   int output_scale;
   bool has_bias;
   int activation;
@@ -106,9 +106,10 @@ private:
   static constexpr int WEIGHT_IDX = 0;
   static constexpr int BIAS_IDX = 1;
 
-public:
-  Linear(int batch_size, int in_features, int out_features, bool has_bias = true,
-         int activation = RELU, tiled_matmul_type_t matmul_type = WS);
+ public:
+  Linear(int batch_size, int in_features, int out_features,
+         bool has_bias = true, int activation = RELU,
+         tiled_matmul_type_t matmul_type = WS);
   ~Linear();
 
   int prepare() override;

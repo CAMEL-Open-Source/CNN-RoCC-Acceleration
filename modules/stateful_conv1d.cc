@@ -10,7 +10,8 @@
 StatefulConv1d::StatefulConv1d(int batch_size, int in_features,
                                int out_features, int in_length, int kernel_size,
                                int stride, int dilation, int padding,
-                               int activation, bool has_bias, tiled_matmul_type_t matmul_type)
+                               int activation, bool has_bias,
+                               tiled_matmul_type_t matmul_type)
     : Conv1d(batch_size, in_features, out_features, in_length, kernel_size,
              stride, dilation, padding, activation, has_bias, matmul_type) {
   assert(stride == 1);
@@ -56,7 +57,6 @@ int StatefulConv1d::seq2col(const elem_t *input) {
   int patch_row = 0;
   // iterate over batch
   for (int n_batch = 0; n_batch < batch_size; n_batch++) {
-
     int patch_col = 0;
     // iterate over filter coordinates
     for (int filter_col = 0; filter_col < kernel_size; filter_col++) {
@@ -65,7 +65,8 @@ int StatefulConv1d::seq2col(const elem_t *input) {
 
         if (pixel_col < 0) {
           // output[patch_row][patch_col] = 0;
-        } else {
+        }
+        else {
           seq2col_out[ARRAY_INDEX_2D(patch_size, patch_row, patch_col)] =
               input[ARRAY_INDEX_3D(kernel_reach, in_features, n_batch,
                                    pixel_col, im_channel)];
@@ -81,7 +82,6 @@ int StatefulConv1d::seq2col(const elem_t *input) {
 }
 
 int StatefulConv1d::merge_and_save(elem_t *new_input) {
-
   for (int b = 0; b < batch_size; b++) {
     // merge old_out & new_out
     // old_in
@@ -112,7 +112,6 @@ int StatefulConv1d::merge_and_save(elem_t *new_input) {
 }
 
 int StatefulConv1d::forward(elem_t *input, elem_t *output) {
-
   merge_and_save(input);
 
   seq2col(in_merged);

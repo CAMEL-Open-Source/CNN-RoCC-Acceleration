@@ -82,14 +82,12 @@ int Conv1d::prepare(std::vector<elem_t *> &params, std::vector<int> &scales) {
 }
 
 int Conv1d::seq2col(const elem_t *input) {
-
   int patch_row = 0;
   // iterate over batch
   for (int n_batch = 0; n_batch < batch_size; n_batch++) {
     // iterate over image coordinates
     for (int im_col = -padding; im_col < in_length - kernel_reach + 1;
          im_col += stride) {
-
       // iterate over filter coordinates
       int patch_col = 0;
       for (int filter_col = 0; filter_col < kernel_size; filter_col++) {
@@ -98,7 +96,8 @@ int Conv1d::seq2col(const elem_t *input) {
 
           if (pixel_col < 0 || pixel_col >= in_length) {
             // output[patch_row][patch_col] = 0;
-          } else {
+          }
+          else {
             seq2col_out[ARRAY_INDEX_2D(patch_size, patch_row, patch_col)] =
                 input[ARRAY_INDEX_3D(in_length, in_features, n_batch, pixel_col,
                                      im_channel)];
