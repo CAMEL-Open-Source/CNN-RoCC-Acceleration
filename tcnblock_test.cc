@@ -8,6 +8,7 @@
 #include "tcnblock_test.hh"
 
 int main() {
+  printf("Running TCN Block Test..\n");
 #ifndef BAREMETAL
   if (mlockall(MCL_CURRENT | MCL_FUTURE) != 0) {
     perror("mlockall failed");
