@@ -1,8 +1,16 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(Interval-Gemmini)
 
-set(CMAKE_C_COMPILER riscv64-unknown-linux-gnu-gcc)
-set(CMAKE_CXX_COMPILER riscv64-unknown-linux-gnu-g++)
+option(SPIKE "build for spike" OFF)
+
+if (SPIKE)
+    set(CMAKE_C_COMPILER riscv64-unknown-elf-gcc)
+    set(CMAKE_CXX_COMPILER riscv64-unknown-elf-g++)
+    add_definitions(-DBAREMETAL=1)
+else()
+    set(CMAKE_C_COMPILER riscv64-unknown-linux-gnu-gcc)
+    set(CMAKE_CXX_COMPILER riscv64-unknown-linux-gnu-g++)
+endif()
 SET(CMAKE_EXE_LINKER_FLAGS "-static")
 
 option(MODE_VCU118 "Use VCU118 instead of VC707." OFF)
@@ -84,7 +92,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mcmodel=medany \
     -fno-common \
     -fno-builtin-printf \
     -fno-exceptions \
-    -march=rv64gc -Wa,-march=rv64gcxhwacha \
+    -march=rv64gc \
     -lm \
     -lgcc \
     -DID_STRING=$(ID_STRING) \
