@@ -24,10 +24,12 @@ class DepthwiseConv1d : public Conv1d {
                   int in_length, int kernel_size, int stride, int dilation,
                   int padding, int activation = RELU, bool has_bias = true);
   ~DepthwiseConv1d();
+
   int prepare() override;
   int prepare(std::vector<elem_t *> &, std::vector<int> &) override;
   int seq2col(const elem_t *input) override;
   int forward(elem_t *input, elem_t *output) override;
+
   void print_weights() override;
 };
 
@@ -39,6 +41,7 @@ class PointwiseConv1d : public Conv1d {
   PointwiseConv1d(int batch_size, int in_features, int out_features,
                   int in_length, int activation = RELU, bool has_bias = true);
   ~PointwiseConv1d() {}
+
   int seq2col(const elem_t *input) override;
 };
 
@@ -65,9 +68,12 @@ class DWSConv1d : public Layer {
             int kernel_size, int stride, int dilation, int padding,
             int activation = RELU, bool has_bias = true);
   ~DWSConv1d();
+
   int prepare() override;
   int prepare(std::vector<elem_t *> &, std::vector<int> &) override;
+
   int forward(elem_t *input, elem_t *output) override;
+
   void print_weights() override;
 };
 
