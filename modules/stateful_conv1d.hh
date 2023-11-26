@@ -26,6 +26,7 @@ class StatefulConv1d : public Conv1d {
                  int padding, int activation = RELU, bool has_bias = true,
                  tiled_matmul_type_t matmul_type = WS);
   ~StatefulConv1d();
+
   int prepare() override;
   int prepare(std::vector<elem_t *> &, std::vector<int> &) override;
   int forward(elem_t *input,
