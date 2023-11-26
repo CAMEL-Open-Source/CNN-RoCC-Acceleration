@@ -12,7 +12,7 @@ Before using this repo, user should install Chipyard. See guideline at [Chipyard
 
 Then, since this leverages RISCV's extended instruction set, please follow guideline at [Gemmini's README](https://github.com/ucb-bar/gemmini)
 
-## build
+## Build
 ```
 mkdir build
 cmake .. [-DOPTION]
@@ -26,3 +26,6 @@ class Layer : ABC of all layer classes
 int prepare() : memory allocations, weight copies
 int forward() : forward propagation (inference)
 int backward() : backpropagation (training)
+
+## Run
+Run executable on RISC-V CPU
