@@ -10,6 +10,8 @@ Few changes for painless compilation
 ## Prerequisite
 Before using this repo, user should install Chipyard. See guideline at [Chipyard documentation](https://chipyard.readthedocs.io/en/latest/Chipyard-Basics/Initial-Repo-Setup.html#).
 
+Then, since this leverages RISCV's extended instruction set, please follow guideline at [Gemmini's README](https://github.com/ucb-bar/gemmini)
+
 ## build
 ```
 mkdir build
