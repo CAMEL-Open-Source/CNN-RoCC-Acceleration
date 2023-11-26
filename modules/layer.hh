@@ -83,10 +83,12 @@ class Conv1d : public Layer {
          int activation = RELU, bool has_bias = true,
          tiled_matmul_type_t matmul_type = WS);
   ~Conv1d();
+
   int prepare() override;
   int prepare(std::vector<elem_t *> &, std::vector<int> &) override;
   int forward(elem_t *input, elem_t *output) override;
   virtual int seq2col(const elem_t *input);
+
   void print_weights() override;
   int get_out_length() { return out_length; }
 };
