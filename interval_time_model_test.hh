@@ -8,7 +8,9 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
+#ifndef BAREMETAL
 #include <sys/mman.h>
+#endif
 
 #include "gemmini-api/gemmini_testutils.h"
 #include "modules/interval_time_model.hh"
