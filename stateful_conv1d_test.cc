@@ -10,7 +10,9 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
+#ifndef BAREMETAL
 #include <sys/mman.h>
+#endif
 
 #include "gemmini-api/gemmini_testutils.h"
 #include "util/util.hh"

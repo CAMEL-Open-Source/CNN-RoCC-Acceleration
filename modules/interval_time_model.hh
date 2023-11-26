@@ -11,7 +11,9 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#ifndef BAREMETAL
 #include <sys/mman.h>
+#endif
 
 #include <cstring>
 #include <string>
