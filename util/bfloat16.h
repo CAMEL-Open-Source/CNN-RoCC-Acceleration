@@ -14,6 +14,7 @@ typedef unsigned int uint;
 static uint as_uint(const float x) {
   return *(uint *)&x;
 }
+
 static float as_float(const uint x) {
   return *(float *)&x;
 }
@@ -33,6 +34,7 @@ static float half_to_float(
           ((v - 37) << 23 | ((m << (150 - v)) &
                              0x007FE000)));  // sign : normalized : denormalized
 }
+
 static ushort float_to_half(
     const float x) {  // IEEE-754 16-bit floating-point format (without
                       // infinity): 1-5-10, exp-15, +-131008.0,

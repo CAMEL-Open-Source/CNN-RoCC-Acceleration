@@ -42,6 +42,7 @@ class BaseTCNBlock : public Layer {
                int in_length);
   ~BaseTCNBlock();
   BaseTCNBlock(BaseTCNBlock &&);
+
   int prepare() override;
   int prepare(std::vector<elem_t *> &, std::vector<int> &) override;
   int forward(elem_t *input, elem_t *output) override;
@@ -63,6 +64,7 @@ class StatefulTCNBlock : public BaseTCNBlock {
                    int in_length, int kernel_size, int stride,
                    std::pair<int, int> dilation, int activation,
                    bool has_bias = true, tiled_matmul_type_t matmul_type = WS);
+
   int forward(elem_t *input, elem_t *output) override;
 };
 
