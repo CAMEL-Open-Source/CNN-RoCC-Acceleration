@@ -7,6 +7,9 @@ Few changes for painless compilation
 * defined all functions in `gemmini.h` as static functions (may require revision)
 * defined elem_t_max, elem_t_min as macro
 
+## Prerequisite
+Before using this repo, user should install Chipyard. See guideline at [Chipyard documentation](https://chipyard.readthedocs.io/en/latest/Chipyard-Basics/Initial-Repo-Setup.html#).
+
 ## build
 ```
 mkdir build
