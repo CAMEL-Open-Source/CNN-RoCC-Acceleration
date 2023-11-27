@@ -16,3 +16,8 @@ public:
   static void *malloc(uint32_t);
 };
 
+static void *malloc(uint32_t len) {
+  SimpleMalloc s;
+
+  return s.malloc(len);
+}
