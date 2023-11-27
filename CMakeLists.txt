@@ -34,6 +34,7 @@ add_library(
     modules/stateful_conv1d.cc
     modules/layer.cc
     modules/dws_conv1d.cc
+    util/simple_malloc.cc
 )
 
 # tests
