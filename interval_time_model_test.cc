@@ -10,6 +10,8 @@
 #include <cinttypes>
 
 int main() {
+  printf("Running Interval Time Model Test..\n");
+
   // conversion
   f32MatTof16((ushort *)input, (float *)input_fp32,
               BATCH_SIZE * IN_LENGTH * IN_FEATURES);
