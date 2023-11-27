@@ -38,3 +38,9 @@ void gemm_cpu(T *OUT, T *A, T *B, T *C, const int64_t i, const int64_t j,
   }
 }
 
+// template instantiations
+#define INSTANTIATE_GEMM_FP(device, type)                                      \
+  template void gemm_##device<type>(type *, type *, type *, type *,            \
+                                    const int64_t, const int64_t,              \
+                                    const int64_t);
+INSTANTIATE_GEMM_FP(cpu, float)
