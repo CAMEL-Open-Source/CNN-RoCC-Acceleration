@@ -14,5 +14,11 @@ void gemm_cpu(float *OUT, float *A, float *B, float *C, const int64_t i,
         OUT[_i * k + _k] += A[_i * j + _j] * B[_j * k + _k];
       }
     }
+
+    if (C != nullptr) {
+      for (int64_t _k = 0; _k < k; _k++) {
+        OUT[_i * k + _k] += C[_k];
+      }
+    }
   }
 }
