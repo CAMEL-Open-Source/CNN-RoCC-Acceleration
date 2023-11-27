@@ -8,6 +8,7 @@
 #include "dws_conv1d_test.hh"
 
 int main() {
+  printf("Running Depthwise Convolution 1D Test..\n");
 #ifndef BAREMETAL
   if (mlockall(MCL_CURRENT | MCL_FUTURE) != 0) {
     perror("mlockall failed");
