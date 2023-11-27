@@ -25,4 +25,16 @@
 FP_DECLARATION_TEMPLATE
 void gemm_cpu(T *OUT, T *A, T *B, T *C, const int64_t i, const int64_t j,
               const int64_t k);
+
+#if defined(__riscv) || defined(__riscv__)
+FP_DECLARATION_TEMPLATE
+inline void gemm_hwacha(T *OUT, T *A, T *B, T *C, const int64_t i,
+                        const int64_t j, const int64_t k);
+template <>
+inline void gemm_hwacha<float>(float *OUT, float *A, float *B, float *C,
+                               const int64_t i, const int64_t j,
+                               const int64_t k) {
+}
+#endif
+
 #endif
