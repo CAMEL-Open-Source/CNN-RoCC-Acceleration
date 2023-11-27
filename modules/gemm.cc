@@ -4,9 +4,10 @@
  *
  * Author: Junhyeok Jang <jhjang@camelab.org>
  */
+
 #include "gemm.hh"
 
-void gemm_cpu(float *OUT, float *A, float *B, float *C, const int64_t i,
+void gemm_cpu_fp32(float *OUT, float *A, float *B, float *C, const int64_t i,
                    const int64_t j, const int64_t k) {
   for (int64_t _i = 0; _i < i; _i++) {
     for (int64_t _j = 0; _j < j; _j++) {
@@ -21,4 +22,8 @@ void gemm_cpu(float *OUT, float *A, float *B, float *C, const int64_t i,
       }
     }
   }
+}
+FP_DECLARATION_TEMPLATE
+void gemm_cpu(T *OUT, T *A, T *B, T *C, const int64_t i, const int64_t j,
+              const int64_t k) {
 }
