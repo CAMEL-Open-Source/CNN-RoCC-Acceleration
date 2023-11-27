@@ -30,10 +30,15 @@ void gemm_cpu(T *OUT, T *A, T *B, T *C, const int64_t i, const int64_t j,
 FP_DECLARATION_TEMPLATE
 inline void gemm_hwacha(T *OUT, T *A, T *B, T *C, const int64_t i,
                         const int64_t j, const int64_t k);
+// from hwacha-net
+void gemm_32(const int M, const int N, const int K, float *A, float *B,
+             float *C);
 template <>
 inline void gemm_hwacha<float>(float *OUT, float *A, float *B, float *C,
                                const int64_t i, const int64_t j,
                                const int64_t k) {
+  __memset(OUT, 0, i * k * sizeof(float));
+    gemm_32(i, k, j, A, B, OUT);
 }
 #endif
 
