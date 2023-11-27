@@ -32,7 +32,7 @@
 #define PATCH_SIZE (KERNEL_DIM * IN_FEATURES)
 #define N_PATCHES (BATCH_SIZE * OUT_LENGTH)
 
-bool vec_is_equal(elem_t *a, elem_t *b, int len) {
+bool is_vec_equal(elem_t *a, elem_t *b, int len) {
   for (int i = 0; i < len; i++)
     if (a[i] != b[i])
       return false;
@@ -128,7 +128,7 @@ int main() {
   myconv.warmup((elem_t *)input1, (elem_t *)output_mat);
   print2dmatrix("output_mat1", (elem_t *)output_mat, BATCH_SIZE * OUT_LENGTH,
                 OUT_FEATURES);
-  bool success = vec_is_equal(&output1[0][0][0], (elem_t *)output_mat,
+  bool success = is_vec_equal(&output1[0][0][0], (elem_t *)output_mat,
                               sizeof(output1) / sizeof(elem_t));
   if (!success)
     printf("FAIL\n");
@@ -142,7 +142,7 @@ int main() {
   printf("Gemmini conv took %llu cycles\n", end_gemmini - start_gemmini);
   print2dmatrix("output_mat2", (elem_t *)output_mat, BATCH_SIZE, OUT_FEATURES);
 
-  success = success && vec_is_equal(&output2[0][0][0], (elem_t *)output_mat,
+  success = success && is_vec_equal(&output2[0][0][0], (elem_t *)output_mat,
                                     sizeof(output2) / sizeof(elem_t));
   if (!success)
     printf("FAIL\n");
@@ -156,7 +156,7 @@ int main() {
   printf("Gemmini conv took %llu cycles\n", end_gemmini - start_gemmini);
   print2dmatrix("output_mat3", (elem_t *)output_mat, BATCH_SIZE, OUT_FEATURES);
 
-  success = success && vec_is_equal(&output3[0][0][0], (elem_t *)output_mat,
+  success = success && is_vec_equal(&output3[0][0][0], (elem_t *)output_mat,
                                     sizeof(output3) / sizeof(elem_t));
   if (!success)
     printf("FAIL\n");

@@ -31,7 +31,7 @@
 #define PATCH_SIZE (KERNEL_DIM * IN_FEATURES)
 #define N_PATCHES (BATCH_SIZE * OUT_LENGTH)
 
-bool vec_is_equal(elem_t *a, elem_t *b, int len) {
+bool is_vec_equal(elem_t *a, elem_t *b, int len) {
   for (int i = 0; i < len; i++)
     if (a[i] != b[i])
       return false;
@@ -111,7 +111,7 @@ int main() {
 
   assert(sizeof(output_mat) == sizeof(output));
 
-  bool success = vec_is_equal(&output[0][0][0], &output_mat[0][0],
+  bool success = is_vec_equal(&output[0][0][0], &output_mat[0][0],
                               sizeof(output) / sizeof(elem_t));
 
   if (success) {
