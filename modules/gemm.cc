@@ -27,6 +27,8 @@ void gemm_cpu_fp32(float *OUT, float *A, float *B, float *C, const int64_t i,
 FP_DECLARATION_TEMPLATE
 void gemm_cpu(T *OUT, T *A, T *B, T *C, const int64_t i, const int64_t j,
               const int64_t k) {
+  __memset(OUT, 0, i * k * sizeof(T));
+
   if constexpr (std::is_same<T, float>::value) {
     gemm_cpu_fp32(OUT, A, B, C, i, j, k);
   } else if (sizeof(T) == 2) {
