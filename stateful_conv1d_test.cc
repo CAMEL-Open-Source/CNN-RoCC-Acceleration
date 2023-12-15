@@ -119,7 +119,7 @@ int main() {
 
   printf("Warming up..\n");
   myconv.warmup((elem_t *)input1, (elem_t *)output_mat);
-  print2dmatrix("output_mat1", (elem_t *)output_mat, BATCH_SIZE * OUT_LENGTH,
+  print_vec2d("output_mat1", (elem_t *)output_mat, BATCH_SIZE * OUT_LENGTH,
                 OUT_FEATURES);
   bool success = is_vec_equal(&output1[0][0][0], (elem_t *)output_mat,
                               sizeof(output1) / sizeof(elem_t));
@@ -133,7 +133,7 @@ int main() {
 
   uint64_t end_gemmini = read_cycles();
   printf("Gemmini conv took %llu cycles\n", end_gemmini - start_gemmini);
-  print2dmatrix("output_mat2", (elem_t *)output_mat, BATCH_SIZE, OUT_FEATURES);
+  print_vec2d("output_mat2", (elem_t *)output_mat, BATCH_SIZE, OUT_FEATURES);
 
   success = success && is_vec_equal(&output2[0][0][0], (elem_t *)output_mat,
                                     sizeof(output2) / sizeof(elem_t));
@@ -147,7 +147,7 @@ int main() {
 
   end_gemmini = read_cycles();
   printf("Gemmini conv took %llu cycles\n", end_gemmini - start_gemmini);
-  print2dmatrix("output_mat3", (elem_t *)output_mat, BATCH_SIZE, OUT_FEATURES);
+  print_vec2d("output_mat3", (elem_t *)output_mat, BATCH_SIZE, OUT_FEATURES);
 
   success = success && is_vec_equal(&output3[0][0][0], (elem_t *)output_mat,
                                     sizeof(output3) / sizeof(elem_t));
