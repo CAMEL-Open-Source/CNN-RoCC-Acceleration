@@ -16,13 +16,20 @@ Then, since this leverages RISCV's extended instruction set, please follow guide
 ```
 mkdir build
 cmake .. [-DOPTION]
-# Available cmake options :
-# MODE_VCU118, MODE_VC707,
-# BUILD_INTERVAL_ONLY, DEBUG_BUILD, PROFILE,
-# SPIKE, BAREMETAL,
-# NUM_BLOCKS, MODE, HIDDEN_FEATURES
 make -j N
 ```
+
+### Available Cmake options
+* MODE_VCU118
+* MODE_VC707
+* BUILD_INTERVAL_ONLY
+* DEBUG_BUILD
+* PROFILE
+* SPIKE
+* BAREMETAL
+* NUM_BLOCKS
+* MODE
+* HIDDEN_FEATURES
 
 class Layer : ABC of all layer classes
 int prepare() : memory allocations, weight copies
