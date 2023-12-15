@@ -44,3 +44,6 @@ spike --extension=gemmini pk <EXEC>
 Few changes for painless compilation
 * defined all functions in `gemmini.h` as static functions (may require revision)
 * defined elem_t_max, elem_t_min as macro
+
+## Ongoing
+We are extending this project to cover hwacha (RISCV-based vector processing accelerator) as well as gemmini.
