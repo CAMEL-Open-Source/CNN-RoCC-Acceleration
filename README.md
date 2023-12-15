@@ -47,3 +47,6 @@ Few changes for painless compilation
 
 ## Ongoing
 We are extending this project to cover hwacha (RISCV-based vector processing accelerator) as well as gemmini.
+
+## Acknowledgment
+This project is funded by IITP 2021-0-00524
