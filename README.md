@@ -28,4 +28,8 @@ int forward() : forward propagation (inference)
 int backward() : backpropagation (training)
 
 ## Run
-Run executable on RISC-V CPU
+Run executable on RISC-V CPU or Spike.
+```
+# run on spike
+spike --extension=gemmini pk <EXEC>
+```
