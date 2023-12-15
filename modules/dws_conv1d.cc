@@ -175,7 +175,7 @@ int DepthwiseConv1d::forward(elem_t *input, elem_t *output) {
 }
 
 void DepthwiseConv1d::print_weights() {
-  print3dmatrix("weight", weight, in_features, kernel_size, 1);
+  print_mat3d("weight", weight, in_features, kernel_size, 1);
   print_vec1d("bias", bias, in_features);
 }
 
