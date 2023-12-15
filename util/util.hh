@@ -23,8 +23,11 @@ void print_mat2d(std::string name, elem_t *matrix, int isize, int jsize);
 void print_mat3d(std::string name, elem_t *matrix, int isize, int jsize,
                  int ksize);
 
+// check if two vectors have exactly same value
 bool is_vec_equal(elem_t *a, elem_t *b, int len);
 bool is_vec_equal(float *a, float *b, int len);
+
+// check if two vectors have exactly similar value (diff < 0.0001)
 bool is_vec_similar(float *a, float *b, int len);
 
 #endif
