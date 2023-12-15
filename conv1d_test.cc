@@ -40,7 +40,7 @@ bool is_vec_equal(elem_t *a, elem_t *b, int len) {
 
 int main() {
   printf("Running Convolution 1D Test..\n");
-#ifndef BAREMETAL
+#if !defined(BAREMETAL) && !defined(SPIKE)
   if (mlockall(MCL_CURRENT | MCL_FUTURE) != 0) {
     perror("mlockall failed");
     exit(1);

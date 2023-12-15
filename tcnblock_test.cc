@@ -9,7 +9,7 @@
 
 int main() {
   printf("Running TCN Block Test..\n");
-#ifndef BAREMETAL
+#if !defined(BAREMETAL) && !defined(SPIKE)
   if (mlockall(MCL_CURRENT | MCL_FUTURE) != 0) {
     perror("mlockall failed");
     exit(1);

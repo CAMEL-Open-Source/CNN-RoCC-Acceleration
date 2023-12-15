@@ -54,7 +54,7 @@ int main() {
   printf(" MATMUL_TYPE:     %8s\n", get_matmul_type_name(MATMUL_TYPE));
 #endif
 
-#ifndef BAREMETAL
+#if !defined(BAREMETAL) && !defined(SPIKE)
   if (mlockall(MCL_CURRENT | MCL_FUTURE) != 0) {
     perror("mlockall failed");
     exit(1);
