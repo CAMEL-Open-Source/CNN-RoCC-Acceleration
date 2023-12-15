@@ -41,7 +41,7 @@ static ushort float_to_half(
                       // +-6.1035156E-5, +-5.9604645E-8, 3.311 digits
   const uint b = as_uint(x) + 0x00001000;  // round-to-nearest-even: add last
                                            // bit after truncated mantissa
-  const uint e = (b & 0x7F800000) >> 23;  // exponent
+  const uint e = (b & 0x7F800000) >> 23;   // exponent
   const uint m = b & 0x007FFFFF;  // mantissa; in line below: 0x007FF000 =
                                   // 0x00800000-0x00001000 = decimal indicator
                                   // flag - initial rounding

@@ -11,7 +11,7 @@
 #define LOCAL_DRAM_END 0x8'0000'0000
 
 class SimpleMalloc {
-public:
+ public:
   static uint32_t counter;
   static void *malloc(uint32_t);
 };
