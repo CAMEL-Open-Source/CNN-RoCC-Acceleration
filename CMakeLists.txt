@@ -41,6 +41,7 @@ add_library(
     modules/layer.cc
     modules/dws_conv1d.cc
     modules/gemm.cc
+    util/util.cc
     util/simple_malloc.cc
 )
 
