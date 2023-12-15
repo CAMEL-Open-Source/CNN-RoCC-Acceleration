@@ -42,11 +42,15 @@ set(SRC_MODULES
     modules/gemm.cc
 )
 
+set(SRC_UTIL
+    util/util.cc
+    util/simple_malloc.cc
+)
+
 # layers, model
 add_library(
     ${SRC_MODULES}
-    util/util.cc
-    util/simple_malloc.cc
+    ${SRC_UTIL}
 )
 
 # tests
