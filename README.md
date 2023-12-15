@@ -43,4 +43,4 @@ spike --extension=gemmini pk <EXEC>
 `/gemmini-api` consists of files brought from gemmini-rocc-tests.
 Few changes for painless compilation
 * defined all functions in `gemmini.h` as static functions (may require revision)
-* defined elem_t_max, elem_t_min as macr
+* defined elem_t_max, elem_t_min as macro
