@@ -21,8 +21,8 @@
 class Layer {
  protected:
   int batch_size;
-  int in_features;
-  int out_features;
+  int in_features;   // number of input features
+  int out_features;  // number of output features
 
  public:
   Layer(int, int, int);
@@ -54,6 +54,7 @@ class Conv1d : public Layer {
   int in_length;
   int out_length;  // length of the output sequence
 
+  // check pytorch's conv1d API which have similar input param
   int kernel_size;
   int stride;
   int dilation;
