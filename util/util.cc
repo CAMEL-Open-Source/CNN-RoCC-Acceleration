@@ -20,3 +20,13 @@ bool is_vec_equal(float *a, float *b, int len) {
       return false;
   return true;
 }
+
+bool is_vec_similar(float *a, float *b, int len) {
+  for (int i = 0; i < len; i++) {
+    float diff = a[i] - b[i];
+
+    if (-0.0001 < diff && diff < 0.0001)
+      return false;
+  }
+  return true;
+}

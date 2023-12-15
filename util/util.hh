@@ -67,5 +67,6 @@ static void print_mat3d(std::string name, elem_t *matrix, int isize,
 
 bool is_vec_equal(elem_t *a, elem_t *b, int len);
 bool is_vec_equal(float *a, float *b, int len);
+bool is_vec_similar(float *a, float *b, int len);
 
 #endif
