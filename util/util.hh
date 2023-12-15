@@ -45,7 +45,7 @@ static void print_vec2d(std::string name, elem_t *matrix, int isize,
   printf("\b\n\n");
 }
 
-static void print3dmatrix(std::string name, elem_t *matrix, int isize,
+static void print_mat3d(std::string name, elem_t *matrix, int isize,
                           int jsize, int ksize) {
   float matrix_fp32[isize][jsize][ksize];
   f16MatTof32(&matrix_fp32[0][0][0], (ushort *)matrix, isize * jsize * ksize);
