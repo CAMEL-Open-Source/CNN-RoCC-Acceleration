@@ -25,7 +25,7 @@ bool is_vec_similar(float *a, float *b, int len) {
   for (int i = 0; i < len; i++) {
     float diff = a[i] - b[i];
 
-    if (-0.0001 < diff && diff < 0.0001)
+    if (-0.0001f < diff && diff < 0.0001f)
       return false;
   }
   return true;
