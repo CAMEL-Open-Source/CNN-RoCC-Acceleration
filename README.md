@@ -2,11 +2,6 @@
 
 Target accelerator: gemmini - RISC-V systolic array
 
-`/gemmini-api` consists of files brought from gemmini-rocc-tests.
-Few changes for painless compilation
-* defined all functions in `gemmini.h` as static functions (may require revision)
-* defined elem_t_max, elem_t_min as macro
-
 ## Prerequisite
 Before using this repo, user should install Chipyard. See guideline at [Chipyard documentation](https://chipyard.readthedocs.io/en/latest/Chipyard-Basics/Initial-Repo-Setup.html#).
 
@@ -43,3 +38,9 @@ spike --extension=gemmini pk <EXEC>
 * `int prepare()` : memory allocations, weight copies
 * `int forward()` : forward propagation (inference)
 * `int backward()` : backpropagation (training)
+
+## Note
+`/gemmini-api` consists of files brought from gemmini-rocc-tests.
+Few changes for painless compilation
+* defined all functions in `gemmini.h` as static functions (may require revision)
+* defined elem_t_max, elem_t_min as macr
