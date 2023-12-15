@@ -1,8 +1,13 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(Interval-Gemmini)
 
+# options
 option(SPIKE "build for spike" ON)
 option(BAREMETAL "build baremetal" OFF)
+option(MODE_VCU118 "Use VCU118 instead of VC707." OFF)
+option(BUILD_INTERVAL_ONLY "Build interval_time only" OFF)
+option(DEBUG_BUILD "Enable all printf" ON)
+option(PROFILE "Enable profile" OFF)
 
 if (BAREMETAL)
     add_definitions(-DBAREMETAL=1)
@@ -19,11 +24,6 @@ endif()
 
 SET(CMAKE_EXE_LINKER_FLAGS "-static")
 
-option(MODE_VCU118 "Use VCU118 instead of VC707." OFF)
-option(BUILD_INTERVAL_ONLY "Build interval_time only" OFF)
-option(DEBUG_BUILD "Enable all printf" ON)
-option(PROFILE "Enable profile" OFF)
-
 set(NUM_BLOCKS "1" CACHE STRING "Set # layers")
 set(MODE "0" CACHE STRING "TCN Mode. 0: original, 1: DWS, 2: Stateful")
 set(HIDDEN_FEATURES "64" CACHE STRING "# hidden features.")
@@ -32,6 +32,7 @@ include_directories(
     ${PROJECT_SOURCE_DIR}
 )
 
+# source
 set(SRC_MODULES
     modules
     modules/interval_time_model.cc
@@ -47,7 +48,6 @@ set(SRC_UTIL
     util/simple_malloc.cc
 )
 
-# layers, model
 add_library(
     ${SRC_MODULES}
     ${SRC_UTIL}
