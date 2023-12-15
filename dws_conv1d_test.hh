@@ -16,6 +16,7 @@
 #include "modules/dws_conv1d.hh"
 #include "util/util.hh"
 
+// test configuration
 #define BATCH_SIZE 1
 #define IN_LENGTH 8
 #define IN_FEATURES 3
