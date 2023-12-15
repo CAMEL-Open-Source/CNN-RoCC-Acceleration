@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(Interval-Gemmini)
 
-option(SPIKE "build for spike" OFF)
+option(SPIKE "build for spike" ON)
 option(BAREMETAL "build baremetal" OFF)
 
 if (BAREMETAL)
@@ -12,6 +12,11 @@ else()
     set(CMAKE_C_COMPILER riscv64-unknown-linux-gnu-gcc)
     set(CMAKE_CXX_COMPILER riscv64-unknown-linux-gnu-g++)
 endif()
+
+if (SPIKE)
+    add_definitions(-DSPIKE=1)
+endif()
+
 SET(CMAKE_EXE_LINKER_FLAGS "-static")
 
 option(MODE_VCU118 "Use VCU118 instead of VC707." OFF)
