@@ -32,15 +32,19 @@ include_directories(
     ${PROJECT_SOURCE_DIR}
 )
 
+set(SRC_MODULES
+modules
+modules/interval_time_model.cc
+modules/tcnblock.cc
+modules/stateful_conv1d.cc
+modules/layer.cc
+modules/dws_conv1d.cc
+modules/gemm.cc
+)
+
 # layers, model
 add_library(
-    modules
-    modules/interval_time_model.cc
-    modules/tcnblock.cc
-    modules/stateful_conv1d.cc
-    modules/layer.cc
-    modules/dws_conv1d.cc
-    modules/gemm.cc
+    ${SRC_MODULES}
     util/util.cc
     util/simple_malloc.cc
 )
