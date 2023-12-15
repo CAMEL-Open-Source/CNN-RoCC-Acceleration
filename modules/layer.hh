@@ -88,6 +88,8 @@ class Conv1d : public Layer {
   int prepare() override;
   int prepare(std::vector<elem_t *> &, std::vector<int> &) override;
   int forward(elem_t *input, elem_t *output) override;
+
+  // 1-dimension version of im2col
   virtual int seq2col(const elem_t *input);
 
   void print_weights() override;
