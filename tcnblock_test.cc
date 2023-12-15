@@ -74,7 +74,7 @@ int main() {
     print3dmatrix("output", (elem_t *)output, BATCH_SIZE, IN_LENGTH,
                   OUT_FEATURES);
 
-    print2dmatrix("output_mat", (elem_t *)output_mat, BATCH_SIZE * IN_LENGTH,
+    print_vec2d("output_mat", (elem_t *)output_mat, BATCH_SIZE * IN_LENGTH,
                   OUT_FEATURES);
 
     return 1;
