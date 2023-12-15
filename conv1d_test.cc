@@ -31,13 +31,6 @@
 #define PATCH_SIZE (KERNEL_DIM * IN_FEATURES)
 #define N_PATCHES (BATCH_SIZE * OUT_LENGTH)
 
-bool is_vec_equal(elem_t *a, elem_t *b, int len) {
-  for (int i = 0; i < len; i++)
-    if (a[i] != b[i])
-      return false;
-  return true;
-}
-
 int main() {
   printf("Running Convolution 1D Test..\n");
 #if !defined(BAREMETAL) && !defined(SPIKE)

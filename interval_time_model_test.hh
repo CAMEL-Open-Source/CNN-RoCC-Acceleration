@@ -39,13 +39,6 @@
 #error "# Layers not set in compiler"
 #endif
 
-bool is_vec_equal(elem_t *a, elem_t *b, int len) {
-  for (int i = 0; i < len; i++)
-    if (a[i] != b[i])
-      return false;
-  return true;
-}
-
 static float input_fp32[BATCH_SIZE][IN_LENGTH][IN_FEATURES] = {{{0., 1., 0.},
                                                                 {3., 3., 0.},
                                                                 {1., 1., 2.},

@@ -31,13 +31,6 @@
 #define PATCH_SIZE (KERNEL_SIZE * IN_FEATURES)
 #define N_PATCHES (BATCH_SIZE * IN_LENGTH)
 
-bool is_vec_equal(elem_t *a, elem_t *b, int len) {
-  for (int i = 0; i < len; i++)
-    if (a[i] != b[i])
-      return false;
-  return true;
-}
-
 static float input_fp32[BATCH_SIZE][IN_LENGTH][IN_FEATURES] = {{{4, 2, 1},
                                                                 {4, 3, 3},
                                                                 {3, 1, 4},
