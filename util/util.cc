@@ -15,6 +15,7 @@ void print_vec1d(std::string name, elem_t *matrix, int isize) {
   for (int i = 0; i < isize; i++) {
     printf("%2.2f,", matrix_fp32[i]);
   }
+
   printf("\b\n\n");
 }
 
@@ -30,6 +31,7 @@ void print_mat2d(std::string name, elem_t *matrix, int isize, int jsize) {
     }
     printf("\b],\n");
   }
+
   printf("\b\n\n");
 }
 
@@ -50,6 +52,7 @@ void print_mat3d(std::string name, elem_t *matrix, int isize, int jsize,
     }
     printf("\b],\n");
   }
+
   printf("\b\n\n");
 }
 
