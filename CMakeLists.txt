@@ -33,13 +33,13 @@ include_directories(
 )
 
 set(SRC_MODULES
-modules
-modules/interval_time_model.cc
-modules/tcnblock.cc
-modules/stateful_conv1d.cc
-modules/layer.cc
-modules/dws_conv1d.cc
-modules/gemm.cc
+    modules
+    modules/interval_time_model.cc
+    modules/tcnblock.cc
+    modules/stateful_conv1d.cc
+    modules/layer.cc
+    modules/dws_conv1d.cc
+    modules/gemm.cc
 )
 
 # layers, model
