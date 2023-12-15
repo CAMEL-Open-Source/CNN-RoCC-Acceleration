@@ -29,7 +29,7 @@ static void print_vec1d(std::string name, elem_t *matrix, int isize) {
   printf("\b\n\n");
 }
 
-static void print2dmatrix(std::string name, elem_t *matrix, int isize,
+static void print_vec2d(std::string name, elem_t *matrix, int isize,
                           int jsize) {
   float matrix_fp32[isize][jsize];
   f16MatTof32(&matrix_fp32[0][0], (ushort *)matrix, isize * jsize);
