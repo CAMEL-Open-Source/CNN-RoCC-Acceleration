@@ -72,10 +72,10 @@ int main() {
     print_mat3d("input", (elem_t *)input, BATCH_SIZE, IN_LENGTH, IN_FEATURES);
 
     print_mat3d("output", (elem_t *)output, BATCH_SIZE, IN_LENGTH,
-                  OUT_FEATURES);
+                OUT_FEATURES);
 
     print_mat2d("output_mat", (elem_t *)output_mat, BATCH_SIZE * IN_LENGTH,
-                  OUT_FEATURES);
+                OUT_FEATURES);
 
     return 1;
   }

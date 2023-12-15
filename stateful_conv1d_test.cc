@@ -120,7 +120,7 @@ int main() {
   printf("Warming up..\n");
   myconv.warmup((elem_t *)input1, (elem_t *)output_mat);
   print_mat2d("output_mat1", (elem_t *)output_mat, BATCH_SIZE * OUT_LENGTH,
-                OUT_FEATURES);
+              OUT_FEATURES);
   bool success = is_vec_equal(&output1[0][0][0], (elem_t *)output_mat,
                               sizeof(output1) / sizeof(elem_t));
   if (!success)

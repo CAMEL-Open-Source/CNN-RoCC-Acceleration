@@ -132,8 +132,7 @@ int main() {
 
     print_mat2d("output", (elem_t *)output, BATCH_SIZE, OUT_CATEGORIES);
 
-    print_mat2d("output_mat", (elem_t *)output_mat, BATCH_SIZE,
-                  OUT_CATEGORIES);
+    print_mat2d("output_mat", (elem_t *)output_mat, BATCH_SIZE, OUT_CATEGORIES);
 
     return 1;
   }
