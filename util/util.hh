@@ -18,7 +18,7 @@
 #define ARRAY_INDEX_3D(jsize, ksize, i, j, k) \
   ((i) * (jsize * ksize) + (j) * (ksize) + (k))
 
-static void print1dvector(std::string name, elem_t *matrix, int isize) {
+static void print_vec1d(std::string name, elem_t *matrix, int isize) {
   float matrix_fp32[isize];
   f16MatTof32(&matrix_fp32[0], (ushort *)matrix, isize);
 
