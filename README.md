@@ -31,14 +31,15 @@ make -j N
 * MODE
 * HIDDEN_FEATURES
 
-class Layer : ABC of all layer classes
-int prepare() : memory allocations, weight copies
-int forward() : forward propagation (inference)
-int backward() : backpropagation (training)
-
 ## Run
 Run executable on RISC-V CPU or Spike.
 ```
 # run on spike
 spike --extension=gemmini pk <EXEC>
 ```
+
+## Important class & functions
+* `class Layer` : ABC of all layer classes
+* `int prepare()` : memory allocations, weight copies
+* `int forward()` : forward propagation (inference)
+* `int backward()` : backpropagation (training)
