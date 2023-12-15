@@ -70,7 +70,7 @@ int main() {
     print_mat3d("output", (elem_t *)output, BATCH_SIZE, IN_LENGTH,
                   OUT_FEATURES);
 
-    print_vec2d("output_mat", (elem_t *)output_mat, BATCH_SIZE * IN_LENGTH,
+    print_mat2d("output_mat", (elem_t *)output_mat, BATCH_SIZE * IN_LENGTH,
                   OUT_FEATURES);
 
     return 1;

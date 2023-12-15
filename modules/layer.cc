@@ -125,7 +125,7 @@ int Conv1d::forward(elem_t *input, elem_t *output) {
 }
 
 void Conv1d::print_weights() {
-  print_vec2d("conv1d weight", weight, patch_size, out_features);
+  print_mat2d("conv1d weight", weight, patch_size, out_features);
   print_vec1d("conv1d bias", bias, out_features);
 }
 
@@ -195,6 +195,6 @@ int Linear::backward(elem_t *doutput, elem_t *dinput) {
 
 void Linear::print_weights() {
   printf("Linear\n");
-  print_vec2d("weight", weight, in_features, out_features);
+  print_mat2d("weight", weight, in_features, out_features);
   print_vec1d("bias", bias, out_features);
 }

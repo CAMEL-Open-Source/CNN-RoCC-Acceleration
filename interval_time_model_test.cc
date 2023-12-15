@@ -130,9 +130,9 @@ int main() {
 
     mymodel.print_weights();
 
-    print_vec2d("output", (elem_t *)output, BATCH_SIZE, OUT_CATEGORIES);
+    print_mat2d("output", (elem_t *)output, BATCH_SIZE, OUT_CATEGORIES);
 
-    print_vec2d("output_mat", (elem_t *)output_mat, BATCH_SIZE,
+    print_mat2d("output_mat", (elem_t *)output_mat, BATCH_SIZE,
                   OUT_CATEGORIES);
 
     return 1;
