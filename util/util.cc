@@ -8,6 +8,8 @@
 #include "util.hh"
 
 void print_vec1d(std::string name, elem_t *matrix, int isize) {
+  // printf cannot directly display the value of fp16
+  // so we convert fp16 to fp32
   float matrix_fp32[isize];
   f16MatTof32(&matrix_fp32[0], (ushort *)matrix, isize);
 
@@ -20,6 +22,8 @@ void print_vec1d(std::string name, elem_t *matrix, int isize) {
 }
 
 void print_mat2d(std::string name, elem_t *matrix, int isize, int jsize) {
+  // printf cannot directly display the value of fp16
+  // so we convert fp16 to fp32
   float matrix_fp32[isize][jsize];
   f16MatTof32(&matrix_fp32[0][0], (ushort *)matrix, isize * jsize);
 
@@ -37,6 +41,8 @@ void print_mat2d(std::string name, elem_t *matrix, int isize, int jsize) {
 
 void print_mat3d(std::string name, elem_t *matrix, int isize, int jsize,
                  int ksize) {
+  // printf cannot directly display the value of fp16
+  // so we convert fp16 to fp32
   float matrix_fp32[isize][jsize][ksize];
   f16MatTof32(&matrix_fp32[0][0][0], (ushort *)matrix, isize * jsize * ksize);
 
