@@ -84,3 +84,7 @@ spike --extension=gemmini pk build/interval_time_model_test
 ## Run on RISC-V CPU
 For the evaluation, you should run this program on RISC-V CPU.
 You might want to build your own RISC-V CPU with [ours](https://camel.kaist.ac.kr/opensource/camel-risc-v-soc) on FPGA.
+
+## Troubleshooting
+* [Chipyard documentation](https://chipyard.readthedocs.io/en/latest/Chipyard-Basics/Initial-Repo-Setup.html)
+* [Chipyard github](https://github.com/ucb-bar/chipyard)
