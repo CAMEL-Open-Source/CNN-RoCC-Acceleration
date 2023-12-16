@@ -13,7 +13,7 @@
 #endif
 
 #include "gemmini-api/gemmini_testutils.h"
-#include "modules/interval_time_model.hh"
+#include "modules/tcn_model.hh"
 #include "modules/layer.hh"
 #include "modules/tcnblock.hh"
 #include "util/bfloat16.h"

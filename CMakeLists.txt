@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(Interval-Gemmini)
+project(TCN-Gemmini)
 
 # options
 option(SPIKE "build for spike" ON)
 option(BAREMETAL "build baremetal" OFF)
 option(MODE_VCU118 "Use VCU118 instead of VC707." OFF)
-option(BUILD_INTERVAL_ONLY "Build interval_time only" OFF)
+option(BUILD_TCN_MODEL_ONLY "Build tcn_model only" OFF)
 option(DEBUG_BUILD "Enable all printf" ON)
 option(PROFILE "Enable profile" OFF)
 
@@ -35,7 +35,7 @@ include_directories(
 # source
 set(SRC_MODULES
     modules
-    modules/interval_time_model.cc
+    modules/tcn_model.cc
     modules/tcnblock.cc
     modules/stateful_conv1d.cc
     modules/layer.cc
@@ -54,7 +54,7 @@ add_library(
 )
 
 # tests
-if (NOT BUILD_INTERVAL_ONLY)
+if (NOT BUILD_TCN_MODEL_ONLY)
     add_executable(conv1d_test conv1d_test.cc)
     add_executable(stateful_conv1d_test stateful_conv1d_test.cc)
     add_executable(tcnblock_test tcnblock_test.cc)
@@ -65,12 +65,12 @@ if (NOT BUILD_INTERVAL_ONLY)
     target_link_libraries(tcnblock_test modules)
     target_link_libraries(dws_conv1d_test modules)
 else ()
-    message(STATUS "Only builds interval_time_model_test")
+    message(STATUS "Only builds tcn_model_test")
 endif ()
 
-add_executable(interval_time_model_test interval_time_model_test.cc)
+add_executable(tcn_model_test tcn_model_test.cc)
 
-target_link_libraries(interval_time_model_test modules)
+target_link_libraries(tcn_model_test modules)
 
 if (MODE_VCU118)
     message(STATUS "Build for VCU118")

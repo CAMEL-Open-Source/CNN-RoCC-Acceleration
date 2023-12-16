@@ -5,8 +5,8 @@
  * Author: Junhyeok Jang <jhjang@camelab.org>
  */
 
-#ifndef __INTERVAL_TIME_MODEL_HH__
-#define __INTERVAL_TIME_MODEL_HH__
+#ifndef __TCN_MODEL_HH__
+#define __TCN_MODEL_HH__
 
 #include <stddef.h>
 #include <stdio.h>

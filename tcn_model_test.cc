@@ -5,12 +5,12 @@
  * Author: Junhyeok Jang <jhjang@camelab.org>
  */
 
-#include "interval_time_model_test.hh"
+#include "tcn_model_test.hh"
 
 #include <cinttypes>
 
 int main() {
-  printf("Running Interval Time Model Test..\n");
+  printf("Running TCN Model Test..\n");
 
   // conversion
   f32MatTof16((ushort *)input, (float *)input_fp32,

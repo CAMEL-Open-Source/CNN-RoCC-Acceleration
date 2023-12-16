@@ -5,7 +5,7 @@
  * Author: Junhyeok Jang <jhjang@camelab.org>
  */
 
-#include "interval_time_model.hh"
+#include "tcn_model.hh"
 
 IntervaltimeModel::IntervaltimeModel(int batch_size, int in_feature,
                                      int hidden_feature, int out_category,
