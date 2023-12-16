@@ -2,36 +2,9 @@
 
 Target accelerator: gemmini - RISC-V systolic array
 
-## Prerequisite
-Before using this repo, user should install Chipyard. See guideline at [Chipyard documentation](https://chipyard.readthedocs.io/en/latest/Chipyard-Basics/Initial-Repo-Setup.html#).
+## Getting started
+Please refer [docs/getting-started.md](docs/getting-started.md).
 
-Then, since this leverages RISCV's extended instruction set, please follow guideline at [Gemmini's README](https://github.com/ucb-bar/gemmini)
-
-## Build
-```
-mkdir build
-cmake .. [-DOPTION]
-make -j N
-```
-
-### Available Cmake options
-* MODE_VCU118
-* MODE_VC707
-* BUILD_INTERVAL_ONLY
-* DEBUG_BUILD
-* PROFILE
-* SPIKE
-* BAREMETAL
-* NUM_BLOCKS
-* MODE
-* HIDDEN_FEATURES
-
-## Run
-Run executable on RISC-V CPU or Spike.
-```
-# run on spike
-spike --extension=gemmini pk <EXEC>
-```
 
 ## Important class & functions
 * `class Layer` : ABC of all layer classes
