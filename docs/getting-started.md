@@ -4,9 +4,9 @@
 This repository contains essential software to run 1D-CNN model on systolic array attached to RISC-V CPU.
 It contains elementary tensor arithmetric primitives such as GEMM, and 1D-CNN model (i.e., [Temporal Convolutional Network](https://arxiv.org/pdf/1803.01271.pdf)) implementation.
 
-<p align="center">
+<div align="center">
   <img src="overview.jpg" />
-</p>
+</div>
 
 ## Prerequisite
 This repository leverages i) RISC-V toolchains and ii) Spike, an RISCV ISA-level simulator.
