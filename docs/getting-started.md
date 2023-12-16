@@ -60,7 +60,7 @@ make -j N
 You might want to use below option for your own purpose.
 * MODE_VCU118
 * MODE_VC707
-* BUILD_INTERVAL_ONLY
+* BUILD_TCN_MODEL_ONLY
 * DEBUG_BUILD
 * PROFILE
 * SPIKE
@@ -78,12 +78,21 @@ spike --extension=gemmini pk build/conv1d_test
 spike --extension=gemmini pk build/dws_conv1d_test
 spike --extension=gemmini pk build/tcnblock_test
 spike --extension=gemmini pk build/stateful_conv1d_test
-spike --extension=gemmini pk build/interval_time_model_test
+spike --extension=gemmini pk build/tcn_model_test
 ```
 
 ## Run on RISC-V CPU
 For the evaluation, you should run this program on RISC-V CPU.
 You might want to build your own RISC-V CPU with [ours](https://camel.kaist.ac.kr/opensource/camel-risc-v-soc) on FPGA.
+
+## Code in Brief
+This repository implements Temporal Convolutional Network (TCN) running on RISC-V-based systolic array.
+TCN includes multiple 1-dimensional convolutional layer and linear layer, both of which can be using GEMM.
+Refer `modules/tcn_model.hh` for more details about TCN model implementation.
+Refer `gemmini-api/gemmini.h`for more details about GEMM.
+<div align="center">
+  <img src="model.jpg" />
+</div>
 
 ## Troubleshooting
 * [Chipyard documentation](https://chipyard.readthedocs.io/en/latest/Chipyard-Basics/Initial-Repo-Setup.html)
