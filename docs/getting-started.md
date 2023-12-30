@@ -97,3 +97,6 @@ Refer `gemmini-api/gemmini.h`for more details about GEMM.
 ## Troubleshooting
 * [Chipyard documentation](https://chipyard.readthedocs.io/en/latest/Chipyard-Basics/Initial-Repo-Setup.html)
 * [Chipyard github](https://github.com/ucb-bar/chipyard)
+
+## Acknowledgment
+This project is supported by IITP 2021-0-00524
