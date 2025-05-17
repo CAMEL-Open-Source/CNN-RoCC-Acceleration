@@ -21,5 +21,9 @@ Few changes for painless compilation
 ## Ongoing
 We are extending this project to cover hwacha (RISCV-based vector processing accelerator) as well as gemmini.
 
+## License
+
+See [LICENSE](./LICENSE) file for details about this project.
+
 ## Acknowledgment
 This project is supported by IITP 2021-0-00524.
